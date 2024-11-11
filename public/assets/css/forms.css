@@ -1,0 +1,195 @@
+@import url(./normalize.css);
+@import url(./reset.css);
+
+/* ------------------Styles of newUserForm.php (start)------------------ */
+
+
+.spanForm {
+    width: 100%;
+    height: auto;
+    color: var(--white);
+    text-align: center;
+    padding-top: 10px;
+    border-top: 2px solid var(--green);
+}
+
+.spanFormError {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    color: var(--white);
+    text-align: center;
+    padding: 10px;
+    background-color: var(--red);
+}
+
+.form {
+    width: 80%;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.form__h1 {
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--white);
+    padding-bottom: 10px;
+}
+
+.form__container {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 15px 10px;
+}
+
+.form__container div {
+    width: 90%;
+    height: auto;
+    position: relative;
+    padding: 5px;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--cafe);
+}
+
+.form__container div label {
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    font-size: 13px;
+    transition: top .5s;
+}
+
+.form__container_inputs {
+    width: 100%;
+    height: 20px;
+    outline: none;
+    border: none;
+    padding: 5px 5px;
+    background-color: transparent;
+    border-bottom: 1px solid var(--white );
+    transition: background-color .5s;
+    color: var(--white);
+    font-size: 13px;
+}
+.form__container_labels--modifier {
+    top: -8px !important;
+}
+
+.form__container_inputs:valid~ label, .form__container_inputs:focus~label {
+    top: -8px;
+}
+
+.form__containerCheck {
+    width: 90%;
+    height: auto;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+    color: var(--white);
+    font-size: 10px;
+    color: var(--white);
+    flex-wrap: wrap;
+}
+
+.form__containerCheck label {
+    margin: 0px 10px;
+}
+
+.form__containerButtons {
+    width: 100%;
+    height: auto;
+}
+
+.form__containerButtons div {
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    justify-content: center;
+}
+
+.form__containerSubmit {
+    width: 70%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.form__containerButtons div button {
+    width: 70%;
+    height: 40px;
+    background-color: var(--cafe);  
+    color: var(--white);
+    padding: 5px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 100%;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#formatUpButton {
+    width: 70%;
+    height: 50%;
+    background-color: var(--azul);  
+    color: var(--white);
+    padding: 5px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 70%;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.form__containerButtons div~div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    color: var(--cafe);
+}
+
+.form__containerButtons div~div a {
+    background-color: var(--white);
+    width: 90%;
+    margin: 0 auto;
+    padding: 5px;
+    color: var(--cafe);
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+}
+
+#inputDateBorn {
+    top: -8px;
+}
+
+.form__container_optionsContainer {
+    position: relative;
+    width: auto;
+}
+
+.form__container_selects {
+    width: 50px;
+    height: auto;
+    margin: 40px;
+}
+
+.form__container_selects {
+    width: 100%;
+    height: auto;
+    border: none;
+    outline: none;
+    background: var(--backgroundMain);
+    padding: 5px;
+}
+
+/* ------------------Styles of newUserForm.php (end)------------------ */

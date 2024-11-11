@@ -1,0 +1,4 @@
+I'll use this folder when I understand the logs. 
+
+Para instalar firabase (ignorando permisos) ejecuta el comando "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+>> npm i firebase"

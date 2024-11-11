@@ -1,0 +1,10 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"bd_taller"},
+{"type":"table","name":"users_list","database":"bd_taller","data":
+[
+{"id":"2","username":"Test3","create_at":"2024-09-19","user_type":"Administrador","name_employee":"Juana Garcia Lopez","correo":"juanita@gmail.com","no_tel":"9932689578"},
+{"id":"3","username":"Abdiel1234","create_at":"2024-09-19","user_type":"Empleado","name_employee":"Juana Garcia Lopez","correo":"juanita@gmail.com","no_tel":"9932689578"}
+]
+}
+]
