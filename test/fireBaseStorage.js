@@ -41,6 +41,9 @@ formTestApi.addEventListener("submit", async (e)=>{
   const resultUpLoad =  await uploadBytes(storageRef, testFile.files[0]) // Subimos la imagen a FireBase Storage (con await esperamos que nos responda) necesitamos la refencia y como segundo parametro la imagen
 
   console.log(resultUpLoad); // Vizualisamos en consola la respuesta de uploadBytes()
+
+  testFile.value = null
+  testText.value = null
 })
 
 // Constantes para Visualizar las Imagenes
@@ -49,6 +52,7 @@ const bntCargar = document.getElementById("bntCargar")
 
 // Evento para Cargar las Imagenes
 bntCargar.addEventListener("click", async (e)=> {
+  bntCargar.disabled = true //Se deshabilita el botón para evitar multiples recargas
   const listRef = ref(storage, '');  // Indicamos la ubicacion de las imagenes
   const imgs = await listAll(listRef) // Devuelve todas las Imagenes Dentro de la Úbicacion indicada
   console.log(imgs.items); // Mostramos en Consola para Mejor Visualización
@@ -78,7 +82,12 @@ bntCargar.addEventListener("click", async (e)=> {
     div.appendChild(h4)
     div.classList.add("containerIMGs")
 
+    //Reinicio e insercción en el contenedor
     containerShow.appendChild(div)
+
+    setTimeout(() => {
+      bntCargar.disabled = false; // Rehabilitar el botón después de 5 segundos
+    }, 5000);
 
     /* Pruebas de visualización
     console.log(img);
