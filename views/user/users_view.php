@@ -33,7 +33,8 @@
                         include_once "./users_list.php"; 
                     } elseif ($control == 2) {
                         include_once "./form_create_user.php";
-                    } else { ?>
+                    } ?>
+                <?php } else { ?>
                     <div class="divTo2Colums">
                             <center><img class="msjIllustrator msjIllustratorBG" src="../assets/img/userView.svg" alt="analysis"></center>
 
@@ -49,8 +50,9 @@
                                 Nos esforzamos por ofrecerte una experiencia sencilla y eficiente. Si necesitas ayuda, no dudes en contactarnos. ¡Gracias por ser parte de J&K Studios!</p>
                             </div>
                         </div>
-                <?php }}
-            ?>
+                <?php
+                }
+                ?>
         </main>
     </div>
 </body>
