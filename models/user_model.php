@@ -19,7 +19,7 @@ b	        When the variable is blob and is send in a package
         public function create_user ($userName, $userPassword, $idEmployee, $userType) {
             include_once '../config/database.php';
             $this->db = new DataBase();
-            $query = "INSERT INTO users (username, password, id_employee, create_at, id_type) VALUES (?, ?, ?, ?, ?)";
+            $query = "INSERT INTO employees (username, password, id_employee, create_at, id_type) VALUES (?, ?, ?, ?, ?)";
             
             $passEncrypted = password_hash($userPassword, PASSWORD_BCRYPT); # This encrypts the password
 
@@ -35,7 +35,7 @@ b	        When the variable is blob and is send in a package
             include_once '../../config/database.php';
             $this->db = new DataBase();
             
-            $query = "SELECT * from users_list"; #  New query
+            $query = "SELECT * from employees"; #  New query
 
             $statement = $this->db->set_connection()->prepare($query); # Prepare the query
             $statement->execute();
