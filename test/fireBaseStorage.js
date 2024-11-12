@@ -29,19 +29,19 @@ formTestApi.addEventListener("submit", async (e)=>{
   e.preventDefault() // Evitamos que Refresque la Página
 
   // Inputs
-  const testFile = document.getElementById("testFile")
-  const testText = document.getElementById("testText")
+  const testFile = document.getElementById("testFile") //Capturar los inputs
+  const testText = document.getElementById("testText") //El nombre de los inputs
 
-  const storageRef = ref(storage, testText.value) // Creamos nuestra referencia y el segundo parametro corresponde a el nombre del archivo 
-
-  // Mostramos lo que ocurre (Valor del input Text, valor que nos devuelve el input File y Mensaje de Exito)
-  containerShow.innerHTML = `<span>Operacion extisoa!!!! Se guardo correctamente con el nombre (${formTestApi["testText"].value})</span>`
-  console.log(testFile.files[0]); // Mostramos en consola lo que devuelve el input File para mejor observación
-  
+  const storageRef = ref(storage, testText.value) // Creamos nuestra referencia y el segundo parametro corresponde a el nombre del archivo
   const resultUpLoad =  await uploadBytes(storageRef, testFile.files[0]) // Subimos la imagen a FireBase Storage (con await esperamos que nos responda) necesitamos la refencia y como segundo parametro la imagen
 
-  console.log(resultUpLoad); // Vizualisamos en consola la respuesta de uploadBytes()
+  // Mostramos lo que ocurre (Valor del input Text, valor que nos devuelve el input File y Mensaje de Exito)
+  containerShow.innerHTML = `<span>¡Operación exitosa! Se guardó correctamente con el nombre: (${formTestApi["testText"].value})</span>`
+  console.log(testFile.files[0]); // Mostramos en consola lo que devuelve el input File para mejor observación
 
+  console.log(resultUpLoad); // Visualizamos en consola la respuesta de uploadBytes()
+
+  //Reiniciamos inputs
   testFile.value = null
   testText.value = null
 })
@@ -53,7 +53,7 @@ const bntCargar = document.getElementById("bntCargar")
 // Evento para Cargar las Imagenes
 bntCargar.addEventListener("click", async (e)=> {
   bntCargar.disabled = true //Se deshabilita el botón para evitar multiples recargas
-  const listRef = ref(storage, '');  // Indicamos la ubicacion de las imagenes
+  const listRef = ref(storage, '');  // Indicamos la ubicacion de las imágenes
   const imgs = await listAll(listRef) // Devuelve todas las Imagenes Dentro de la Úbicacion indicada
   console.log(imgs.items); // Mostramos en Consola para Mejor Visualización
 
