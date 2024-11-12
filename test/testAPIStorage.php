@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <!-- Contenedor del Formulario (Si tengo chance lo mejoro vizualmente) -->
+    <!-- Contenedor del Formulario -->
     <form id="formTestApi"> 
         <h1>Test de FireBase Storage API</h1>
         <input id="testText" type="text" >
