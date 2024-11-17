@@ -19,30 +19,30 @@ b	        When the variable is blob and is send in a package
         public function create_user ($userName, $userPassword, $idEmployee, $userType) {
             include_once '../config/database.php';
             $this->db = new DataBase();
-            $query = "INSERT INTO employees (username, password, id_employee, create_at, id_type) VALUES (?, ?, ?, ?, ?)";
-            
+            $query = "INSERT INTO users (username, password, id_employee, created_at, id_type) VALUES (?, ?, ?, ?, ?)";
+
             $passEncrypted = password_hash($userPassword, PASSWORD_BCRYPT); # This encrypts the password
 
             $statement = $this->db->set_connection()->prepare($query); # Prepare the query
             $statement->bind_param('ssisi', $userName, $passEncrypted, $idEmployee, $this->date, $userType); # Set the data
             $result_query = $statement->execute();
-            
+
             return $result_query; # This returns true or false
         }
 
         public function get_list_users () {
-            
+
             include_once '../../config/database.php';
             $this->db = new DataBase();
-            
-            $query = "SELECT * from employees"; #  New query
+
+            $query = "SELECT * from user_all_details"; #  New query
 
             $statement = $this->db->set_connection()->prepare($query); # Prepare the query
             $statement->execute();
             $data = $statement->get_result(); # Get data as a list
 
             return $data; # This returns an array with the user's data
-        }/* 
+        }/*
             $query = "SELECT userName, password, cve_employee, created_at FROM users WHERE id = ?";
 
             $statement = $this->db->get_connection()->prepare($query); # Prepare the query

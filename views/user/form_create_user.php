@@ -2,7 +2,7 @@
 
 <form class="form" id="formCreateUser" action="../../controllers/user_controller.php" method="POST">
 
-    <span id="spanForm"> 
+    <span id="spanForm">
         <?php
             if (isset($_GET['msj'])) {
                 echo $_GET['msj'];

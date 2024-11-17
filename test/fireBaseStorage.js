@@ -16,24 +16,23 @@ const firebaseConfig = {
   measurementId: "G-Z9Y4VQFWTF"
 };
 
-// Initialize Firebase 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const storage = getStorage()  // Iniciar el Servicio de Storage
-
-
+const storage = getStorage()
 
 // Constantes
 const formTestApi = document.getElementById("formTestApi")
 
 formTestApi.addEventListener("submit", async (e)=>{
-  e.preventDefault() // Evitamos que Refresque la Página
+  e.preventDefault()
 
   // Inputs
   const testFile = document.getElementById("testFile") //Capturar los inputs
   const testText = document.getElementById("testText") //El nombre de los inputs
 
   const storageRef = ref(storage, testText.value) // Creamos nuestra referencia y el segundo parametro corresponde a el nombre del archivo
-  const resultUpLoad =  await uploadBytes(storageRef, testFile.files[0]) // Subimos la imagen a FireBase Storage (con await esperamos que nos responda) necesitamos la refencia y como segundo parametro la imagen
+  const resultUpLoad =  await uploadBytes(storageRef, testFile.files[0]) // Subimos la imagen a FireBase Storage (con await esperamos que nos responda) necesitamos la refencia y como segundo parametro la imagen 
+  // Para guardalo en una carpeta, antes del nombre se ingresa el nombre + / (ejemplo: uploadBytes(storageRef, "carpeta/" + testFile.files[0]))
 
   // Mostramos lo que ocurre (Valor del input Text, valor que nos devuelve el input File y Mensaje de Exito)
   containerShow.innerHTML = `<span>¡Operación exitosa! Se guardó correctamente con el nombre: (${formTestApi["testText"].value})</span>`

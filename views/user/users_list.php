@@ -25,32 +25,32 @@
             $i = 1;
             $rowControl = 1;
             while ($fila = $res->fetch_assoc()) { # Show the data
-                if ($i == $rowControl) { 
+                if ($i == $rowControl) {
                    echo '<tr>';
                         echo '<td>'.$i.'</td>';
-                        echo '<td>'.$fila['id'].'</td>';
+                        echo '<td>'.$fila['id_user'].'</td>';
                         echo '<td>'.$fila['username'].'</td>';
-                        echo '<td>'.$fila['create_at'];
-                        echo '<td>'.$fila['user_type'].'</td>';
-                        echo '<td>'.$fila['name_employee'].'</td>';
-                        echo '<td>'.$fila['correo'].'</td>';
-                        echo '<td>'.$fila['no_tel'].'</td>';
-                        echo '<td class="deleteIcon"> <a href="../src/model/dropUser.php?cve='.$fila['id'].'"> <img src="../../public/assets/icons/delete.svg" alt="deleteIcon"> </a> </td>';
-                        echo '<td class="uploadIcon"> <a href="./users.php?msj&control=3&cve='.$fila['id'].'"> <img src="../../public/assets/icons/upload.svg" alt="uploadIcon"> </a> </td>';
+                        echo '<td>'.$fila['user_created'];
+                        echo '<td>'.$fila['name_job'].'</td>';
+                        echo '<td>'.$fila['first_name']." ".$fila['last_name_paternal'].$fila['last_name_maternal'].'</td>';
+                        echo '<td>'.$fila['email'].'</td>';
+                        echo '<td>'.$fila['phone_number'].'</td>';
+                        echo '<td class="deleteIcon"> <a href="../src/model/dropUser.php?cve='.$fila['id_user'].'"> <img src="../../public/assets/icons/delete.svg" alt="deleteIcon"> </a> </td>';
+                        echo '<td class="uploadIcon"> <a href="./users.php?msj&control=3&cve='.$fila['id_user'].'"> <img src="../../public/assets/icons/upload.svg" alt="uploadIcon"> </a> </td>';
                     echo '</tr>';
                     $i++;
                 } else {
                     echo '<tr class="rowTable">';
                         echo '<td>'.$i.'</td>';
-                        echo '<td>'.$fila['id'].'</td>';
+                        echo '<td>'.$fila['id_user'].'</td>';
                         echo '<td>'.$fila['username'].'</td>';
-                        echo '<td>'.$fila['create_at'];
-                        echo '<td>'.$fila['user_type'].'</td>';
-                        echo '<td>'.$fila['name_employee'].'</td>';
-                        echo '<td>'.$fila['correo'].'</td>';
-                        echo '<td>'.$fila['no_tel'].'</td>';
-                        echo '<td class="deleteIcon"> <a href="../src/model/dropUser.php?cve='.$fila['id'].'"> <img src="../../public/assets/icons/delete.svg" alt="deleteIcon"> </a> </td>';
-                        echo '<td class="uploadIcon"> <a href="./users.php?msj&control=3&cve='.$fila['id'].'"> <img src="../../public/assets/icons/upload.svg" alt="uploadIcon"> </a> </td>';
+                        echo '<td>'.$fila['user_created'];
+                        echo '<td>'.$fila['name_job'].'</td>';
+                        echo '<td>'.$fila['first_name']." ".$fila['last_name_paternal'].$fila['last_name_maternal'].'</td>';
+                        echo '<td>'.$fila['email'].'</td>';
+                        echo '<td>'.$fila['phone_number'].'</td>';
+                        echo '<td class="deleteIcon"> <a href="../src/model/dropUser.php?cve='.$fila['id_user'].'"> <img src="../../public/assets/icons/delete.svg" alt="deleteIcon"> </a> </td>';
+                        echo '<td class="uploadIcon"> <a href="./users.php?msj&control=3&cve='.$fila['id_user'].'"> <img src="../../public/assets/icons/upload.svg" alt="uploadIcon"> </a> </td>';
                     echo '</tr>';
                     $i++;
                     $rowControl += 2;
@@ -58,5 +58,4 @@
             }
          ?>
 </table>
-<!-- 
-<script src="../../public/assets/js/get_list_users.js"></script> -->
+<!--<script src="../../public/assets/js/get_list_users.js"></script> -->
