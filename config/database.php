@@ -8,7 +8,7 @@
     class DataBase {
 
         public $connection;
-        
+
         public function __construct () { # This is the contructor of the clas
         }
 

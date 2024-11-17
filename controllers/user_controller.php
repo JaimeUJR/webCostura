@@ -6,7 +6,6 @@ function create_user_controller()
     $userName = $_POST['userName'];
     $userPassword = $_POST['password'];
     $userType = $_POST['userType'];
-    $createUser = $_POST['createUser'];
 
     $userModel = new User();
 
