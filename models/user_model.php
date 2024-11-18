@@ -35,7 +35,7 @@ b	        When the variable is blob and is send in a package
             include_once '../../config/database.php';
             $this->db = new DataBase();
 
-            $query = "SELECT * from user_all_details"; #  New query
+            $query = "SELECT * from users"; #  New query
 
             $statement = $this->db->set_connection()->prepare($query); # Prepare the query
             $statement->execute();
