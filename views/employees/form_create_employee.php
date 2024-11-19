@@ -1,46 +1,42 @@
 <form class="form" id="formCreateEmployee" action="" method="POST">
 
     <span id="spanForm">
-        <?php
-        if (isset($_GET['msj'])) {
-            echo $_GET['msj'];
-        }
-        ?>
+        <!-- Warnings by JS -->
     </span>
 
     <h1 class="form__h1">Crear un Empleado</h1>
 
     <div class="form__container">
         <div> <!-- First Name -->
-            <input class="form__container_inputs" type="text" name="name" autocomplete="off" id="Name" required>
+            <input class="form__container_inputs" type="text" name="name" autocomplete="off" id="name" required>
             <label class="form__container--labels" for="Name">Nombre(s)</label>
         </div>
 
         <div> <!-- Last Name Paternal -->
-            <input class="form__container_inputs" type="text" name="lastName1" autocomplete="off" id="LastName1"
+            <input class="form__container_inputs" type="text" name="lastName1" autocomplete="off" id="lastName1"
                 required>
             <label for="LastName1">Apellido Paterno</label>
         </div>
 
         <div> <!-- LastName Maternal -->
-            <input class="form__container_inputs" type="text" name="lastName2" autocomplete="off" id="LastName2"
+            <input class="form__container_inputs" type="text" name="lastName2" autocomplete="off" id="lastName2"
                 required>
             <label for="LastName2">Apellido Materno</label>
         </div>
 
         <div> <!-- Phone Number -->
-            <input class="form__container_inputs" type="text" name="no_Phone" autocomplete="off" id="No_Phone"
+            <input class="form__container_inputs" type="text" name="no_Phone" autocomplete="off" id="no_Phone"
                 parent="[0-9]" required>
             <label for="No.Phone">Número Telefonico</label>
         </div>
 
         <div> <!-- Born Day -->
-            <input class="form__container_inputs" type="date" name="dateBorn" autocomplete="off" id="DateBorn" required>
+            <input class="form__container_inputs" type="date" name="dateBorn" autocomplete="off" id="dateBorn" required>
             <label id="inputDateBorn" for="DateBorn">Fecha de Nacimiento</label>
         </div>
 
         <div> <!-- Email -->
-            <input class="form__container_inputs" type="email" name="email" autocomplete="off" id="Email" required>
+            <input class="form__container_inputs" type="email" name="email" autocomplete="off" id="email" required>
             <label for="Email">Correo</label>
         </div>
 
@@ -58,9 +54,7 @@
             <label for="municipaly">Municipio</label>
 
             <select class="form__container_selects" name="municipaly" id="municipaly" required>
-                <div id="divMunicipaly">
-                    <!-- The options are generated whit JavaScript -->
-                </div>
+                <!-- The options are generated whit JavaScript -->
             </select>
         </div>
 

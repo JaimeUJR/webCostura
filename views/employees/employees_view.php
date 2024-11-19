@@ -45,13 +45,14 @@
                                 <th>Salario</th>
                                 <th>Estado del Empleado</th>
                                 <th># Telefono</th>
+                                <th>Estado</th>
                                 <th>Borrar</th>
                                 <th>Actualizar</th>
                             </tr>
                         </thead>
                         <tbody id="tbody">
                             <?php
-                            echo $controller->list_employee();
+                            echo var_dump($controller->list_employee());
                             ?>
                         </tbody>
                     </table>
