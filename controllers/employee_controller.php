@@ -22,42 +22,44 @@ class Employee_controller
     public function list_employee()
     {
         $list = $this->model->get_list_employee();
-        $res = $list->get_result();
         $rowControl = 1;
         $i = 1;
         $stringList = '';
-        while ($employee = $res->fetch_assoc()) {
+        while ($employee = $list->fetch_assoc()) {
             if ($i == $rowControl) {
                 $stringList  .= '<tr>';
                 $stringList  .= '<td>' . $i . '</td>';
-                $stringList  .= '<td>' . $employee['first_name'] . " " . $employee['last_name_paternal'] . $employee['last_name_maternal'] . '</td>';
+                $stringList  .= '<td>' . $employee['first_name'] . " " . $employee['last_name_paternal'] . " " . $employee['last_name_maternal'] . '</td>';
                 $stringList  .= '<td>' . $employee['hiring_at'] . '</td>';
-                $stringList  .= '<td>' . $employee['name_job'];
-                $stringList  .= '<td>$' . $employee['salary'] . '</td>';
+                $stringList  .= '<td>' . $employee['job_name'];
+                $stringList  .= '<td>' . $employee['salary'] . '</td>';
                 $stringList  .= '<td>' . $employee['status_job'] . '</td>';
                 $stringList  .= '<td>' . $employee['phone_number'] . '</td>';
-                $stringList  .= '<td class="deleteIcon"> <a href="../src/model/dropUser.php?cve=' . $employee['id_user'] . '"> <img src="../../public/assets/icons/delete.svg" alt="deleteIcon"> </a> </td>';
-                $stringList  .= '<td class="uploadIcon"> <a href="./users.php?msj&control=3&cve=' . $employee['id_user'] . '"> <img src="../../public/assets/icons/upload.svg" alt="uploadIcon"> </a> </td>';
+                $stringList  .= '<td>' . $employee['state_name'] . '</td>';
+                $stringList  .= '<td>' . $employee['municipal_name'] . '</td>';
+                $stringList  .= '<td class="deleteIcon"> <a href="../src/model/dropUser.php?cve=' . $employee['id_employee'] . '"> <img src="../../public/assets/icons/delete.svg" alt="deleteIcon"> </a> </td>';
+                $stringList  .= '<td class="uploadIcon"> <a href="./users.php?msj&control=3&cve=' . $employee['id_employee'] . '"> <img src="../../public/assets/icons/upload.svg" alt="uploadIcon"> </a> </td>';
                 $stringList  .= '</tr>';
                 $i++;
             } else {
                 $stringList  .= '<tr class="rowTable">';
                 $stringList  .= '<td>' . $i . '</td>';
-                $stringList  .= '<td>' . $employee['username'] . '</td>';
-                $stringList  .= '<td>' . $employee['user_created'];
-                $stringList  .= '<td>' . $employee['name_job'] . '</td>';
-                $stringList  .= '<td>' . $employee['first_name'] . " " . $employee['last_name_paternal'] . $employee['last_name_maternal'] . '</td>';
-                $stringList  .= '<td>' . $employee['email'] . '</td>';
+                $stringList  .= '<td>' . $employee['first_name'] . " " . $employee['last_name_paternal'] . " " . $employee['last_name_maternal'] . '</td>';
+                $stringList  .= '<td>' . $employee['hiring_at'] . '</td>';
+                $stringList  .= '<td>' . $employee['job_name'];
+                $stringList  .= '<td>' . $employee['salary'] . '</td>';
+                $stringList  .= '<td>' . $employee['status_job'] . '</td>';
                 $stringList  .= '<td>' . $employee['phone_number'] . '</td>';
-                $stringList  .= '<td class="deleteIcon"> <a href="../src/model/dropUser.php?cve=' . $employee['id_user'] . '"> <img src="../../public/assets/icons/delete.svg" alt="deleteIcon"> </a> </td>';
-                $stringList  .= '<td class="uploadIcon"> <a href="./users.php?msj&control=3&cve=' . $employee['id_user'] . '"> <img src="../../public/assets/icons/upload.svg" alt="uploadIcon"> </a> </td>';
+                $stringList  .= '<td>' . $employee['state_name'] . '</td>';
+                $stringList  .= '<td>' . $employee['municipal_name'] . '</td>';
+                $stringList  .= '<td class="deleteIcon"> <a href="../src/model/dropUser.php?cve=' . $employee['id_employee'] . '"> <img src="../../public/assets/icons/delete.svg" alt="deleteIcon"> </a> </td>';
+                $stringList  .= '<td class="uploadIcon"> <a href="./users.php?msj&control=3&cve=' . $employee['id_employee'] . '"> <img src="../../public/assets/icons/upload.svg" alt="uploadIcon"> </a> </td>';
                 $stringList  .= '</tr>';
                 $i++;
-                $rowControl  .= 2;
+                $rowControl  += 2;
             }
-
-            return $stringList;
         }
+        return $stringList;
     }
 
     // Finished

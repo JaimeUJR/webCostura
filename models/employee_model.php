@@ -64,11 +64,12 @@ class Employee
     // Finished
     public function get_list_employee()
     {
-        $query = "SELECT * FROM user_all_details";
+        $query = "SELECT * FROM employee_all_details";
 
         $statement = $this->db->set_connection()->prepare($query);
         $statement->execute();
-        return $statement;
+        $res = $statement->get_result();
+        return $res;
     }
 
     // Finished

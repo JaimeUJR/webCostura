@@ -1,5 +1,7 @@
-const divMunicipaly = document.getElementById("divMunicipaly")
+const divMunicipaly = document.getElementById("municipaly")
 const idState = document.getElementById("state")
+
+console.log("Conection successful with get_list_municipal.js")
 
 divMunicipaly.innerHTML = "<option value = 0>Primero Selecciona un Estado</option>"
 

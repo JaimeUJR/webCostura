@@ -32,7 +32,7 @@
                         echo '<td>'.$fila['username'].'</td>';
                         echo '<td>'.$fila['user_created'];
                         echo '<td>'.$fila['name_job'].'</td>';
-                        echo '<td>'.$fila['first_name']." ".$fila['last_name_paternal'].$fila['last_name_maternal'].'</td>';
+                        echo '<td>'.$fila['first_name']." ".$fila['last_name_paternal']. " " .$fila['last_name_maternal'].'</td>';
                         echo '<td>'.$fila['email'].'</td>';
                         echo '<td>'.$fila['phone_number'].'</td>';
                         echo '<td class="deleteIcon"> <a href="../src/model/dropUser.php?cve='.$fila['id_user'].'"> <img src="../../public/assets/icons/delete.svg" alt="deleteIcon"> </a> </td>';
@@ -46,7 +46,7 @@
                         echo '<td>'.$fila['username'].'</td>';
                         echo '<td>'.$fila['user_created'];
                         echo '<td>'.$fila['name_job'].'</td>';
-                        echo '<td>'.$fila['first_name']." ".$fila['last_name_paternal'].$fila['last_name_maternal'].'</td>';
+                        echo '<td>'.$fila['first_name']." ".$fila['last_name_paternal']. " " .$fila['last_name_maternal'].'</td>';
                         echo '<td>'.$fila['email'].'</td>';
                         echo '<td>'.$fila['phone_number'].'</td>';
                         echo '<td class="deleteIcon"> <a href="../src/model/dropUser.php?cve='.$fila['id_user'].'"> <img src="../../public/assets/icons/delete.svg" alt="deleteIcon"> </a> </td>';
