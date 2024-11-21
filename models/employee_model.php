@@ -7,24 +7,89 @@ b	        When the variable is blob and is send in a package
 -->
 
 <?php
-    include_once "../config/database.php";
+include_once "../../config/database.php";
 
-    class Employee {
+class Employee
+{
 
-        private $db;
-        private $date;
+    private $db;
+    private $today;
 
-        public function __construct () {
-            $this->db = new DataBase();
-            $this->date = date("Y-m-d");
-        }
+    public function __construct()
+    {
+        $this->db = new DataBase();
+        $this->today = date("Y-m-d");
+    }
 
-        public function create_employee () {
-            
-        }
+    // Finished
+    public function create_employee($state, $municipaly, $name, $cologne, $lastName1, $lastName2, $no_Phone, $dateBorn, $email, $job)
+    {
+        $db = $this->db->set_connection();
 
-        public function get_list_employee () {
-            
+        $db->begin_transaction();
+        try {
+            // Insertar en people
+            $queryPeople =
+                "INSERT INTO people (id_state, id_municipal, first_name, address, last_name_paternal, last_name_maternal, phone_number, date_born, email, created_at) " .
+                "VALUES ($state, $municipaly, '$name', '$cologne', '$lastName1', '$lastName2', '$no_Phone', '$dateBorn', '$email', '$this->today')";
+            $db->query($queryPeople);
+
+            $id_people = $db->insert_id;
+
+            // Validar id_job
+            $jobCheck = $db->query("SELECT COUNT(*) AS count FROM jobs WHERE id_job = $job");
+            if ($jobCheck->fetch_assoc()['count'] == 0) {
+                throw new Exception("Error: El id_job no existe en la tabla jobs ($job).");
+            }
+
+            // Validar id_people
+            if (!$id_people || $id_people <= 0) {
+                throw new Exception("Error: id_people no es válido. ($id_people)");
+            }
+
+            // Insertar en employees
+            $queryEmployee =
+                "INSERT INTO employees (id_status_job, id_job, hiring_at, id_person) " .
+                "VALUES (1, 1, '$this->today', $id_people)";
+            $db->query($queryEmployee);
+
+            $db->commit();
+            return ["success" => true, "id_people" => $id_people];
+        } catch (Exception $e) {
+            $db->rollback();
+            return ["error" => $e->getMessage()];
         }
     }
+
+    // Finished
+    public function get_list_employee()
+    {
+        $query = "SELECT * FROM employee_all_details";
+
+        $statement = $this->db->set_connection()->prepare($query);
+        $statement->execute();
+        $res = $statement->get_result();
+        return $res;
+    }
+
+    // Finished
+    public function get_list_jobs()
+    {
+        $query = "SELECT * from jobs";
+        $statement = $this->db->set_connection()->prepare($query);
+        $statement->execute();
+        return $statement;
+    }
+
+    // Finished
+    public function get_list_states()
+    {
+        $query = "SELECT * FROM state ORDER BY name";
+
+        $statement = $this->db->set_connection()->prepare($query);
+        $statement->execute();
+
+        return $statement;
+    }
+}
 ?>

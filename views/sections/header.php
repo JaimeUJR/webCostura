@@ -2,7 +2,7 @@
 
 <header>
     <div class="headerContainers">
-        <img id="LogoTaller" src="../assets/img/LogoSinFondo.png" alt="LogoTaller">
+        <img id="LogoTaller" src="../../public/assets/img/LogoSinFondo.png" alt="LogoTaller">
     </div>
 
     <div class="headerContainers">
@@ -10,7 +10,7 @@
                     <li>
                         <a href="../../index.php" class="menuLinks">Inicio</a>
                     </li>
-                    <li>    
+                    <li>
                         <a href="../customer/customer_view.php" class="menuLinks">Clientes</a>
                     </li>
                     <li>
@@ -33,7 +33,7 @@
         </menu>
     </div>
     <div class="headerContainers">
-        <img id="user_Icon" src="../assets/icons/user_Icon.svg" alt="user_Icon">
+        <img id="user_Icon" src="../../public/assets/icons/user_Icon.svg" alt="user_Icon">
         <a href="../config/closeSesion.php" class="menuLinks">CERRAR SESIÓN</a>
     </div>
 </header>
