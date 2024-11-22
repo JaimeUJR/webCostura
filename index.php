@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
     <link rel="stylesheet" href="./public/assets/css/nav_bars.css">
+    <link rel="stylesheet" href="./public/assets/css/wellcome.css">
     <script>
         try {
             const savedUser = JSON.parse(localStorage.getItem("user"))
@@ -27,6 +28,7 @@
         }
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -70,12 +72,21 @@
         </div>
     </header>
 
-    <div class="container">
-        <img src="./public/assets/icons/welcome.svg" alt="working" class="msjIllustrator">
-        <h1>¡Bienvenido!</h1>
-        <p>Donde el arte de la confección se encuentra con la perfección. Nos enorgullece ofrecer servicios personalizados para cada cliente, asegurándonos de que cada detalle sea perfecto. ¡Tu estilo es nuestro compromiso!</p>
+    <div class="div5050">
+        <div class="sticky">
+            <h1>Estadiscticas del ultimo mes...</h1>
+            <img src="./public/assets/icons/welcome.svg" alt="working" class="msjIllustrator">
+            <h1>¡Bienvenido!</h1>
+            <p>Donde el arte de la confección se encuentra con la perfección.</p>
+        </div>
+        <div>
+            <canvas id="pieChart"></canvas>
+            <canvas id="barChart"></canvas>
+            <!-- <canvas id="lineChart"></canvas> -->
+        </div>
     </div>
 
+    <script src="./public/assets/js/charts.js"></script>
 </body>
 
 </html>
