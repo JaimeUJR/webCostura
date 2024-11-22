@@ -1,12 +1,29 @@
 <link rel="stylesheet" href="../../public/assets/css/forms.css">
 
-<form class="form" id="formCreateUser" action="../../controllers/user_controller.php" method="POST">
+<form class="form" id="formCreateUser" action="" method="POST">
 
     <span id="spanForm">
         <?php
-            if (isset($_GET['msj'])) {
-                echo $_GET['msj'];
-            }
+        if (isset($_GET['msj'])) {
+            echo $_GET['msj'];
+        }
+
+        include_once "../../controllers/user_controller.php";
+        $controller = new User_controller();
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $userName = (string)$_POST['userName'];
+            $userPassword = (string)$_POST['password'];
+            $idEmployee = (int)$_POST['employeesList'];
+            $userType = (int)$_POST['userType'];
+
+            $action = $controller->create_user_controller($userName, $userPassword, $idEmployee, $userType);
+             if ($action) {
+                echo "Creado con éxtio";
+             } else echo "Algo Falló";
+
+        }
         ?>
     </span>
 
@@ -19,12 +36,12 @@
         </div>
 
         <div>
-            <label class="form__container_labels--modifier"  for="password">Contraseña</label>
+            <label class="form__container_labels--modifier" for="password">Contraseña</label>
             <input class="form__container_inputs" type="password" name="password" autocomplete="off" id="password" required minlength="8">
         </div>
 
         <div>
-            <label class="form__container_labels--modifier"  for="passwordConfirm">Confirme la Contraseña</label>
+            <label class="form__container_labels--modifier" for="passwordConfirm">Confirme la Contraseña</label>
             <input class="form__container_inputs" type="password" name="passwordConfirm" autocomplete="off" id="passwordConfirm" required minlength="8">
         </div>
 
@@ -37,14 +54,22 @@
             </select>
         </div>
 
-        <div> <input type="hidden" name="createUser" value="createUser"> </div>
+        <div class="form__container_optionsContainer">
+            <label for="employeesList">Seleccione el Empleado</label>
+            <select class="form__container_selects" id="employeesList" name="employeesList" required>
+                <?php
+                echo $controller->list_employee();
+                ?>
+            </select>
+        </div>
+
         <div class="form__containerButtons">
             <div class="form__containerSubmit">
-                <button type="button" onclick="validate_form_user()">Crea Usuario</button>
+                <button type="submit">Crea Usuario</button>
             </div>
         </div>
     </div>
     <span id="spanValidate"></span>
 </form>
 
-<script src="../../public/assets/js/validations.js"></script>
+<script type="module" src="../../public/assets/js/validations.js"></script>

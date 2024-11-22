@@ -17,10 +17,9 @@
     width: 100%;
     height: auto;
     border-radius: 10px;
-    color: var(--white);
+    color: var(--red);
     text-align: center;
     padding: 10px;
-    background-color: var(--red);
 }
 
 .form {
@@ -132,7 +131,7 @@
     flex-wrap: wrap;
 }
 
-.form__containerSubmit > .btnSubmit {
+.btnSubmit {
     width: 70%;
     height: 40px;
     background-color: var(--cafe);
@@ -143,6 +142,7 @@
     font-size: 100%;
     font-weight: 600;
     cursor: pointer;
+    margin: 20px auto;
 }
 
 .form__containerButtons div button {
@@ -209,6 +209,22 @@
     background: var(--backgroundMain);
     padding: 5px;
     margin-top: 20px;
+}
+
+.formLogin {
+    width: 30%;
+    height: auto;
+    background-color: var(--backgroundAside);
+    border-radius: 10px;
+    margin: 200px auto;
+}
+
+.form__container--login {
+    width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px 20px;
 }
 
 /* ------------------Styles of newUserForm.php (end)------------------ */

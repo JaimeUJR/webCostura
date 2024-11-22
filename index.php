@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
     <link rel="stylesheet" href="./public/assets/css/nav_bars.css">
+    <script>
+        try {
+            const savedUser = JSON.parse(localStorage.getItem("user"))
+
+            if (!savedUser) {
+                window.location.href = "./views/login/login.html"
+            } else {
+                // console.log("Usuario recuperado del local storage:", savedUser)
+                console.log("Sesión activa:", savedUser)
+            }
+
+        } catch (error) {
+            console.error("Error al configurar la persistencia de la sesión:", error.message);
+        }
+
+        function closeSession() {
+            localStorage.removeItem("user")
+            window.location.reload()
+        }
+    </script>
+
 </head>
+
 <body>
+
     <header>
         <div class="headerContainers">
             <img id="LogoTaller" src="./public/assets/img/LogoSinFondo.png" alt="LogoTaller">
@@ -42,7 +66,7 @@
         </div>
         <div class="headerContainers">
             <img id="user_Icon" src="./public/assets/icons/user_Icon.svg" alt="user_Icon">
-            <a href="./config/closeSesion.php" class="menuLinks">CERRAR SESIÓN</a>
+            <button id="bntLoginOut" onclick="closeSession()">Cerrar Sesion</button>
         </div>
     </header>
 
@@ -50,7 +74,8 @@
         <img src="./public/assets/icons/welcome.svg" alt="working" class="msjIllustrator">
         <h1>¡Bienvenido!</h1>
         <p>Donde el arte de la confección se encuentra con la perfección. Nos enorgullece ofrecer servicios personalizados para cada cliente, asegurándonos de que cada detalle sea perfecto. ¡Tu estilo es nuestro compromiso!</p>
-  </div>
+    </div>
 
 </body>
-</html> 
+
+</html>
