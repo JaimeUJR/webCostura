@@ -52,7 +52,7 @@
                         </thead>
                         <tbody id="tbody">
                             <?php
-                            echo var_dump($controller->list_employee());
+                            echo $controller->list_employee();
                             ?>
                         </tbody>
                     </table>
