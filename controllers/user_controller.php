@@ -1,29 +1,31 @@
 <?php
-include_once "../models/user_model.php";
 
-function create_user_controller()
-{
-    $userName = $_POST['userName'];
-    $userPassword = $_POST['password'];
-    $userType = $_POST['userType'];
+class User_controller {
+    private $model;
 
-    $userModel = new User();
+    public function __construct()
+    {
+        include_once "../../models/user_model.php";
+        $this->model = new User();
+    }
 
-    if ($userModel) {
-        $action = $userModel->create_user($userName, $userPassword, 1, $userType);
+    public function list_employee () {
+        $list = $this->model->get_list_employees();
 
-        if ($action) {
-            $msj = "Creación Exitosa";
-            header("Location: ../views/user/users_view.php?control=2&msj=" . $msj);
-        } else {
-            $msj = "Error de Conexión";
-            header("Location: ../views/user/users_view.php?control=2&msj=" . $msj);
+        $string = "<option value = 0>Selecciona un Empleado</option>";
+
+        while ($employee = $list->fetch_assoc()) {
+            $string .= "<option value = ".$employee['id_employee']." data-email= '".$employee['email']."'>".$employee['name']."</option>";
         }
-    } else {
-        $msj = "Error de comunicacón";
-        header("Location: ../views/user/users_view.php?control=2&msj=" . $msj);
+
+        return $string;
+    }
+
+    public function create_user_controller ($userName, $userPassword, $idEmployee, $userType) {
+        $this->model->create_user($userName, $userPassword, $idEmployee, $userType);
     }
 }
+
 
 function get_list_user()
 {
@@ -49,9 +51,7 @@ if (isset($_GET['get_list_user'])) {
     return get_list_user();
 }
 
-if (isset($_POST['createUser'])) {
-    create_user_controller();
-}/*
+/*
 $json = json_encode(get_list_user());
 echo "Codificacion de lo que devuelve el modelo: " . var_dump($json);
 echo "<br><br>";

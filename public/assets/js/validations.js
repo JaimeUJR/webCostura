@@ -1,3 +1,6 @@
+import { auth } from "../../assets/js/firebase.js";
+import { createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
 const reEx_userName = /^[A-Za-z0-9_]{4,15}$/
 const reEx_userPassowrd = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[_$/])[A-Za-z\d_$/]{8,20}$/
 const reEx_text = /^[a-zA-ZÁÉÍÓÚáéíóúÑñ0-9,.\-\s]{1,500}$/;
@@ -11,38 +14,65 @@ const reEx_no_space = /^\S*$/
 console.log("connection successful with validations.js")
 
 if (document.getElementById("formCreateUser")) {
-    function validate_form_user() {
-        const form = document.getElementById("formCreateUser")
+    const formCreateUser = document.getElementById("formCreateUser");
 
-        let userName = document.getElementById("userName").value
-        let userPassword = document.getElementById("password").value
-        let passwordConfirm = document.getElementById("passwordConfirm").value
+    formCreateUser.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-        let spanValidate = document.getElementById("spanValidate")
-        spanValidate.innerText = ""
-        let warning = ""
+        let userName = document.getElementById("userName").value.trim();
+        let userPassword = document.getElementById("password").value.trim();
+        let passwordConfirm = document.getElementById("passwordConfirm").value.trim();
+        let employeeList = document.getElementById("employeesList");
+        let userEmail = employeeList.options[employeeList.selectedIndex].dataset.email;
+        let spanValidate = document.getElementById("spanValidate");
+        spanValidate.innerText = "";
+        let warning = "";
 
         if (!reEx_userName.test(userName)) {
-            warning += "El nombre de usuario no es válido (Solo se admiten letras y números, sin espacios y con una longitud mínima de 4 carácteres)<br><br>"
+            warning += "El nombre de usuario no es válido (Solo se admiten letras y números, sin espacios y con una longitud mínima de 4 carácteres)<br><br>";
         }
 
         if (!reEx_userPassowrd.test(userPassword)) {
-            warning += "La contraseña no es válida (Debe contener al menos una letra minúscula y una mayúscula, un número y un cáracter especial con una longitud mínima de 8 carácteres, para que sea segura)<br><br>"
+            warning += "La contraseña no es válida (Debe contener al menos una letra minúscula y una mayúscula, un número y un cáracter especial con una longitud mínima de 8 carácteres, para que sea segura)<br><br>";
         }
 
         if (userPassword.localeCompare(passwordConfirm)) {
-            warning += "La confirmación de la contraseña no es igual <br><br>"
+            warning += "La confirmación de la contraseña no es igual <br><br>";
         }
 
-        console.log("userName Test: " + reEx_userName.test(userName) + " || Paswword Test: " + reEx_userPassowrd.test(userPassword) + " || Password Compare: " + userPassword.localeCompare(passwordConfirm))
+        console.log("userName Test: " + reEx_userName.test(userName) + " || Paswword Test: " + reEx_userPassowrd.test(userPassword) + " || Password Compare: " + userPassword.localeCompare(passwordConfirm));
+        console.log("Email obtenido:", userEmail);
 
         if (warning.length > 0) {
-            spanValidate.innerHTML = warning
+            spanValidate.innerHTML = warning;
         } else {
-            form.submit()
+            // Validar el formato del correo
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(userEmail)) {
+                spanValidate.innerHTML = "El correo electrónico no tiene un formato válido.<br><br>";
+                return;
+            }
+
+            // Llamar a la función de registro
+            await registerUser(userEmail, userPassword, userName)
+            setTimeout(() => { formCreateUser.submit() }, 2000)
         }
+    });
+}
+
+async function registerUser(email, password, username) {
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        await updateProfile(user, { displayName: username });
+
+        console.log("Usuario registrado exitosamente:", user);
+    } catch (error) {
+        console.error("Error al registrar usuario:", error.message);
     }
 }
+
 
 if (document.getElementById("formCreateEmployee")) {
     const formCreateEmployee = document.getElementById("formCreateEmployee")
@@ -106,7 +136,7 @@ if (document.getElementById("formCreateEmployee")) {
 
         if (warning.length > 0) {
             spanForm.innerHTML = warning
-        }  else {
+        } else {
             formCreateEmployee.submit()
         }
     })
