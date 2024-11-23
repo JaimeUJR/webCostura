@@ -62,7 +62,7 @@
                 }
             } else { ?>
                     <div class="divTo2Colums">
-                        <center><img class="msjIllustrator msjIllustratorBG" src="../assets/img/userView.svg" alt="analysis"></center>
+                        <center><img class="msjIllustrator msjIllustratorBG" src="../../public/assets/img/userView.svg" alt="analysis"></center>
 
                         <div>
                             <p> ¡Bienvenido! En esta sección, podrás visualizar toda la información de las personas y Empleados registrados. Desde aquí, puedes:
@@ -80,7 +80,6 @@
                 ?>
         </main>
     </div>
-    <script src="../../public/assets/js/validations.js"></script>
-    <script src="../../public/assets/js/get_list_municipal.js"></script>
+    <script type="module" src="../../public/assets/js/validations.js"></script>
 </body>
 </html>

@@ -10,7 +10,11 @@
 </head>
 
 <body>
-    <?php include_once "../sections/header.php"; ?> <!-- Include the header navBar -->
+    <?php
+    include_once "../sections/header.php";
+    include_once "../../controllers/user_controller.php";
+    $controller = new User_controller();
+    ?> <!-- Include the header navBar -->
 
     <div class="divTo2Colums">
 
@@ -31,14 +35,37 @@
             if (isset($_GET['control'])) { # This is a control to what show
                 $control = $_GET['control'];
 
-                if ($control == 1) {
-                    include_once "./users_list.php";
-                } elseif ($control == 2) {
+                if ($control == 1) { ?>
+                    <table class="tableQuerys">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th># ID</th>
+                                <th>Nobre de Usuario</th>
+                                <th>Fecha de Creación</th>
+                                <th>Tipo de Usuario</th>
+                                <th>Nombre del empleado</th>
+                                <th>Correo</th>
+                                <th># Telefono</th>
+                                <th>Borrar</th>
+                                <th>Actualizar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+
+                            <?php
+                            echo $controller->users_list();
+                            ?>
+
+                        </tbody>
+                    </table>
+
+                <?php } elseif ($control == 2) {
                     include_once "./form_create_user.php";
                 } ?>
             <?php } else { ?>
                 <div class="divTo2Colums">
-                    <center><img class="msjIllustrator msjIllustratorBG" src="../assets/img/userView.svg" alt="analysis"></center>
+                    <center><img class="msjIllustrator msjIllustratorBG" src="../../public/assets/img/userView.svg" alt="analysis"></center>
 
                     <div>
                         <p> ¡Bienvenido! En esta sección, podrás visualizar toda la información de las personas y usuarios registrados. Desde aquí, puedes:
