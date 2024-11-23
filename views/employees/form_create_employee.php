@@ -84,6 +84,7 @@
     </div>
 
 </form>
+<script src="../../public/assets/js/get_list_municipal.js"></script>
 
 <?php
     if ($_SERVER['REQUEST_METHOD'] == "POST") {

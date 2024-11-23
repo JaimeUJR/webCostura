@@ -45,15 +45,20 @@ class User
         $data = $statement->get_result(); # Get data as a list
 
         return $data; # This returns an array with the user's data
-    }/*
-            $query = "SELECT userName, password, cve_employee, created_at FROM users WHERE id = ?";
+    }
 
-            $statement = $this->db->get_connection()->prepare($query); # Prepare the query
-            $statement->bind_param('i', $cveUser); # Set the data
-            $statement->execute();
-            $data = $statement->get_result(); # Get data as a list
-            */
+    public function get_list_employees()
+    {
+        $query = "SELECT id_employee, CONCAT(first_name, ' ', last_name_paternal, ' ', last_name_maternal) AS name, email FROM employee_all_details";
 
+        $statement = $this->db->set_connection()->prepare($query);
+        $statement->execute();
+        $res = $statement->get_result();
+
+        return $res;
+    }
+
+    /* That is NOT ok, they will update
     public function update_user($cveUser, $userName, $userPassword)
     {
         $query = "UPDATE users SET userName = ?, password = ? WHERE cve_employee = ?";
@@ -77,14 +82,5 @@ class User
         return $result_query; # This returns true or false
     }
 
-    public function get_list_employees()
-    {
-        $query = "SELECT id_employee, CONCAT(first_name, ' ', last_name_paternal, ' ', last_name_maternal) AS name, email FROM employee_all_details";
-
-        $statement = $this->db->set_connection()->prepare($query);
-        $statement->execute();
-        $res = $statement->get_result();
-
-        return $res;
-    }
+*/
 }

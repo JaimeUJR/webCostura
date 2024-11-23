@@ -12,14 +12,13 @@ class Employee_controller
         $this->today = date('Y-mm-dd');
     }
 
-    // Finished
+    // This is ok and is finished
     public function create_employee($state , $municipaly, $name, $cologne, $lastName1, $lastName2, $no_Phone, $dateBorn, $email, $job)
     {
         return $this->model->create_employee($state , $municipaly, $name, $cologne, $lastName1, $lastName2, $no_Phone, $dateBorn, $email, $job); #Return [true or false, true or false]
     }
 
-    // Finished
-    public function list_employee()
+    public function list_employee() // This is ok and is finished
     {
         $list = $this->model->get_list_employee();
         $rowControl = 1;
@@ -62,8 +61,7 @@ class Employee_controller
         return $stringList;
     }
 
-    // Finished
-    public function list_jobs()
+    public function list_jobs() // This is ok and is finished
     {
         $list = $this->model->get_list_jobs()->get_result();
 
@@ -75,8 +73,7 @@ class Employee_controller
         return $stringList;
     }
 
-    // Finished
-    public function list_states ()
+    public function list_states () // This is ok and is finished
     {
         $res = $this->model->get_list_states()->get_result();
 
