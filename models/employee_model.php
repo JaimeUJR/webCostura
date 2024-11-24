@@ -44,7 +44,7 @@ class Employee
 
             $queryEmployee =
                 "INSERT INTO employees (id_status_job, id_job, hiring_at, id_person) " .
-                "VALUES (1, 1, '$this->today', $id_people)";
+                "VALUES (1, $job, '$this->today', $id_people)";
             $db->query($queryEmployee);
 
             $db->commit();
@@ -82,5 +82,30 @@ class Employee
 
         return $statement;
     }
+
+    public function get_employee_details($id) // This is ok and is finished
+    {
+        $query = "SELECT * FROM employee_all_details where id_employee = $id";
+
+        $statement = $this->db->set_connection()->prepare($query);
+        $statement->execute();
+        $res = $statement->get_result();
+        return $res;
+    }
+
+    public function services_by_employee($id)
+    {
+        /*$query = "SELECT s.*, CONCAT(p.first_name, ' ', p.last_name_paternal, ' ', p.last_name_maternal) AS nameDeliveryBy
+                FROM services AS s
+                    INNER JOIN employees AS e ON s.received_by = e.id_employee
+                        INNER JOIN people AS p ON e.id_person = p.id_person
+                WHERE received_by = ?";*/
+        $query = "SELECT * FROM services WHERE received_by = ?";
+        $statement = $this->db->set_connection()->prepare($query);
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        return $statement->get_result();
+    }
+
 }
 ?>

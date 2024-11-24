@@ -39,15 +39,12 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Nobre de Empleado</th>
+                                <th>Nombre de Empleado</th>
                                 <th>Contradado en:</th>
                                 <th>Cargo / Puesto</th>
-                                <th>Salario</th>
                                 <th>Estado del Empleado</th>
                                 <th># Telefono</th>
-                                <th>Estado</th>
-                                <th>Borrar</th>
-                                <th>Actualizar</th>
+                                <th>+ Info.</th>
                             </tr>
                         </thead>
                         <tbody id="tbody">

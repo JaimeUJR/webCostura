@@ -12,18 +12,20 @@
     background-color: var(--whiteLight);
 }
 
+.icon {
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
 .moreInfoIcon {
     background-color: var(--cafe);
-    padding: 10px;
 }
 
 .deleteIcon {
     background-color: var(--red);
-    padding: 10px;
 }
 
 .uploadIcon {
-    padding: 10px;
     background-color: var(--green);
 }
 
@@ -35,4 +37,13 @@
 th, td {
     padding: 5px;
     border-radius: 2px;
+}
+
+a {
+    width: 100%;
+    height: auto;
+}
+
+.center {
+    margin: 0 auto;
 }
