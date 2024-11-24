@@ -1,0 +1,72 @@
+@import url("./normalize.css");
+@import url("./reset.css");
+
+.containerPersonalData {
+    width: 100%;
+    height: 90%;
+    background-color: var(--backgroundAside);
+    border-radius: 10px;
+    padding: 50px 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px 10px;
+    display: grid;
+    grid-auto-flow: 40%;
+}
+
+.containerProfesionalData {
+    width: 700px;
+    min-height: 100px;
+    background-color: var(--backgroundAside);
+    padding: 20px;
+    margin: 10px auto 50px;
+    border-radius: 10px;
+}
+
+#btnBack {
+    width: auto;
+    height: 10px;
+    position: absolute;
+    top: 110px;
+    left: 10px;
+    text-decoration: none;
+    color: var(--cafe);
+    font-weight: 700;
+    font-size: small;
+    padding: 5px;
+}
+
+#btnBack img {
+    position: relative;
+    top: 7px;
+}
+
+h2 {
+    text-align: center;
+    color: var(--colorBase);
+    margin-bottom: 20px;
+}
+
+.info,
+.measurements {
+    margin-bottom: 20px;
+}
+
+.info div,
+.measurements div {
+    margin-bottom: 10px;
+}
+
+.measurements div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1em;
+}
+
+.label {
+    font-weight: bold;
+    color: var(--colorBase);
+}
+
+.value {
+    color: var(--cafe);
+}
